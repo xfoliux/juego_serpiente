@@ -1,142 +1,476 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #1e293b, #0f172a);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+body{
+
+    font-family:'Orbitron', sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    background:
+    linear-gradient(
+        -45deg,
+        #240046,
+        #3c096c,
+        #5a189a,
+        #7b2cbf,
+        #9d4edd
+    );
+
+    background-size:400% 400%;
+
+    animation:fondoAnimado 12s ease infinite;
+
+    padding:20px;
 }
 
-.contenedor-juego {
-    width: 100%;
-    max-width: 720px;
-    background: #111827;
-    border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-    text-align: center;
-}
+/* =========================
+   FONDO ANIMADO
+========================= */
 
-h1 {
-    margin-bottom: 10px;
-    font-size: 32px;
-    color: #22c55e;
-}
+@keyframes fondoAnimado{
 
-.descripcion {
-    margin-bottom: 18px;
-    color: #cbd5e1;
-    line-height: 1.5;
-}
-
-.panel-info {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-}
-
-.tarjeta-info {
-    flex: 1;
-    min-width: 150px;
-    background: #1f2937;
-    padding: 14px;
-    border-radius: 14px;
-    border: 1px solid #374151;
-}
-
-.tarjeta-info span {
-    display: block;
-    font-size: 14px;
-    color: #94a3b8;
-    margin-bottom: 4px;
-}
-
-.tarjeta-info strong {
-    font-size: 24px;
-    color: #facc15;
-}
-
-canvas {
-    width: 100%;
-    max-width: 500px;
-    background: #020617;
-    border: 4px solid #22c55e;
-    border-radius: 16px;
-    display: block;
-    margin: 0 auto 20px auto;
-}
-
-.controles {
-    display: grid;
-    grid-template-columns: repeat(3, 90px);
-    gap: 10px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 18px;
-}
-
-.controles button,
-.acciones button {
-    border: none;
-    border-radius: 12px;
-    padding: 12px 16px;
-    background: #22c55e;
-    color: #052e16;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.controles button:hover,
-.acciones button:hover {
-    transform: scale(1.05);
-    background: #86efac;
-}
-
-.vacio {
-    visibility: hidden;
-}
-
-.acciones {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.acciones .secundario {
-    background: #38bdf8;
-    color: #082f49;
-}
-
-.mensaje {
-    margin-top: 14px;
-    color: #e2e8f0;
-    min-height: 24px;
-    font-weight: bold;
-}
-
-@media (max-width: 520px) {
-    h1 {
-        font-size: 24px;
+    0%{
+        background-position:0% 50%;
     }
 
-    .controles {
-        grid-template-columns: repeat(3, 75px);
+    50%{
+        background-position:100% 50%;
     }
 
-    .controles button,
-    .acciones button {
-        padding: 10px;
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+/* =========================
+   CONTENEDOR
+========================= */
+
+.contenedor-juego{
+
+    width:100%;
+    max-width:900px;
+
+    background:rgba(255,255,255,0.08);
+
+    border:2px solid rgba(255,255,255,0.15);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:35px;
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:
+        0 0 30px rgba(255,0,255,0.4),
+        0 0 80px rgba(0,255,255,0.2);
+
+    animation:entrada 1s ease;
+}
+
+@keyframes entrada{
+
+    from{
+        transform:translateY(40px);
+        opacity:0;
+    }
+
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+/* =========================
+   TITULO
+========================= */
+
+h1{
+
+    font-size:3.5rem;
+
+    margin-bottom:12px;
+
+    color:#ffffff;
+
+    text-shadow:
+        0 0 10px #ff00ff,
+        0 0 25px #00ffff,
+        0 0 50px #ff00ff;
+
+    animation:tituloGlow 2s infinite alternate;
+}
+
+@keyframes tituloGlow{
+
+    from{
+
+        text-shadow:
+            0 0 10px #ff00ff,
+            0 0 20px #00ffff;
+    }
+
+    to{
+
+        text-shadow:
+            0 0 20px #ff00ff,
+            0 0 40px #00ffff,
+            0 0 80px #ff00ff;
+    }
+}
+
+.descripcion{
+
+    color:#f3e8ff;
+
+    margin-bottom:25px;
+
+    font-size:1.1rem;
+
+    letter-spacing:2px;
+}
+
+/* =========================
+   TARJETAS
+========================= */
+
+.panel-info{
+
+    display:flex;
+    justify-content:center;
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:25px;
+}
+
+.tarjeta-info{
+
+    min-width:160px;
+
+    padding:20px;
+
+    border-radius:22px;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,0.08),
+        rgba(255,255,255,0.03)
+    );
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    color:white;
+
+    transition:0.4s;
+
+    animation:flotar 4s ease-in-out infinite;
+}
+
+.tarjeta-info:hover{
+
+    transform:
+        translateY(-10px)
+        scale(1.05);
+
+    box-shadow:
+        0 0 25px #ff00ff,
+        0 0 50px #00ffff;
+}
+
+.tarjeta-info span{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#e9d5ff;
+
+    font-size:1rem;
+}
+
+.tarjeta-info strong{
+
+    font-size:2rem;
+
+    color:#ffffff;
+}
+
+@keyframes flotar{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   CANVAS
+========================= */
+
+#canvasJuego{
+
+    background:
+    linear-gradient(
+        135deg,
+        #0f172a,
+        #020617
+    );
+
+    border:5px solid #ff00ff;
+
+    border-radius:25px;
+
+    box-shadow:
+        0 0 20px #ff00ff,
+        0 0 40px #00ffff,
+        inset 0 0 20px rgba(255,255,255,0.1);
+
+    margin-bottom:25px;
+
+    animation:canvasGlow 3s infinite alternate;
+}
+
+@keyframes canvasGlow{
+
+    from{
+
+        box-shadow:
+            0 0 20px #ff00ff,
+            0 0 40px #00ffff;
+    }
+
+    to{
+
+        box-shadow:
+            0 0 40px #ff00ff,
+            0 0 80px #00ffff;
+    }
+}
+
+/* =========================
+   CONTROLES
+========================= */
+
+.controles{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,90px);
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-bottom:25px;
+}
+
+.controles button{
+
+    width:90px;
+    height:90px;
+
+    border:none;
+
+    border-radius:22px;
+
+    font-size:2rem;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff00ff,
+        #00ffff
+    );
+
+    transition:0.3s;
+
+    box-shadow:
+        0 0 15px rgba(255,0,255,0.6);
+
+    animation:botonFlotante 2s ease-in-out infinite;
+}
+
+.controles button:hover{
+
+    transform:
+        scale(1.1)
+        rotate(6deg);
+
+    box-shadow:
+        0 0 25px #ff00ff,
+        0 0 50px #00ffff;
+}
+
+.vacio{
+
+    visibility:hidden;
+}
+
+@keyframes botonFlotante{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.acciones{
+
+    display:flex;
+    justify-content:center;
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:20px;
+}
+
+.acciones button{
+
+    padding:16px 35px;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:
+    linear-gradient(
+        135deg,
+        #00ffff,
+        #ff00ff
+    );
+
+    transition:0.4s;
+
+    box-shadow:
+        0 0 15px rgba(255,0,255,0.5);
+}
+
+.acciones button:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+        0 0 25px #ff00ff,
+        0 0 50px #00ffff;
+}
+
+.secundario{
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff4d6d,
+        #ff006e
+    ) !important;
+}
+
+/* =========================
+   MENSAJE
+========================= */
+
+.mensaje{
+
+    color:#f5d0fe;
+
+    font-size:1.1rem;
+
+    animation:mensajeGlow 2s infinite alternate;
+}
+
+@keyframes mensajeGlow{
+
+    from{
+        opacity:0.6;
+    }
+
+    to{
+        opacity:1;
+        text-shadow:
+            0 0 10px #ff00ff,
+            0 0 20px #00ffff;
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2.4rem;
+    }
+
+    #canvasJuego{
+        width:100%;
+        height:auto;
+    }
+
+    .controles{
+
+        grid-template-columns:
+            repeat(3,70px);
+    }
+
+    .controles button{
+
+        width:70px;
+        height:70px;
+
+        font-size:1.5rem;
+    }
+
+    .tarjeta-info{
+        width:100%;
     }
 }
