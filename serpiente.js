@@ -307,26 +307,22 @@ function cambiarDireccion(direccion) {
   if (direccionBloqueada) {
     return;
   }
-  if (
-    direccionActual === "derecha" &&
+  if (direccionActual === "derecha" &&
     direccion === "izquierda"
   ) {
     return;
   }
-  if (
-    direccionActual === "izquierda" &&
+  if (direccionActual === "izquierda" &&
     direccion === "derecha"
   ) {
     return;
   }
-  if (
-    direccionActual === "arriba" &&
+  if (direccionActual === "arriba" &&
     direccion === "abajo"
   ) {
     return;
   }
-  if (
-    direccionActual === "abajo" &&
+  if (direccionActual === "abajo" &&
     direccion === "arriba"
   ) {
     return;
@@ -371,7 +367,6 @@ function moverSerpiente() {
 
     // Aumentar velocidad
     if (velocidad > 60) {
-
       velocidad -= 10;
     }
 
@@ -511,7 +506,7 @@ function reiniciarJuego() {
   clearInterval(intervaloSerpiente);
   puntos = 0;
   monedas = 0;
-  velocidad = 250;
+  velocidad = 300;
   monedasMapa = [];
   document.getElementById("puntaje")
     .innerText = puntos;
